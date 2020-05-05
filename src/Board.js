@@ -40,7 +40,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       let row = [];
       for (let j = 0; j < columns; j++){
         row.push(generateLight());
-      }
+      };
       initialBoard.push(row);
     }
     return initialBoard;
@@ -51,7 +51,12 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   }
 
   function hasWon() {
-    // TODO: check the board in state to determine whether the player has won.
+    for (let i = 0; i < rows; i++){
+      let row = [];
+      for (let j = 0; j < columns; j++){
+        if (initialBoard[i][j]) return false;
+      };
+      return true;
   }
 
   function flipCellsAround(coord) {
