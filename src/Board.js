@@ -51,11 +51,12 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   function hasWon() {
     for (let x = 0; x < nrows; x++) {
       for (let y = 0; y < ncols; y++) {
+        console.log("check",board[y][x])
         if (board[y][x]) return false;
       };
-      return true;
     }
-  }
+    return true;
+  };
 
   function flipCellsAround(coord) {
     setBoard(oldBoard => {
@@ -86,7 +87,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   // if the game is won, just show a winning msg & render nothing else
 
   if (hasWon()) {
-    alert("You won!")
+    return ("you won!")
   };
 
   // make table board
