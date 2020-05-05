@@ -36,9 +36,9 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
   function createBoard() {
     let initialBoard = [];
-    for (let i = 0; i < rows; i++){
+    for (let x = 0; x < rows; x++){
       let row = [];
-      for (let j = 0; j < columns; j++){
+      for (let y = 0; y < columns; y++){
         row.push(generateLight());
       };
       initialBoard.push(row);
@@ -51,10 +51,10 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   }
 
   function hasWon() {
-    for (let i = 0; i < rows; i++){
+    for (let x = 0; x < rows; x++){
       let row = [];
-      for (let j = 0; j < columns; j++){
-        if (initialBoard[i][j]) return false;
+      for (let y = 0; y < columns; y++){
+        if (initialBoard[y][x]) return false;
       };
       return true;
   }
@@ -72,10 +72,15 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       };
 
       // TODO: Make a (deep) copy of the oldBoard
-
+      newBoard = oldBoard.map(oldRow => oldRow.map(oldCell => oldCell));
       // TODO: in the copy, flip this cell and the cells around it
-
+      flipCell(y, x, newBoard);
+      flipCell(y - 1, x, newBoard);
+      flipCell(y + 1, x, newBoard);
+      flipCell(y, x - 1, newBoard);
+      flipCell(y, x + 1, newBoard);
       // TODO: return the copy
+      return newBoard;
     });
   }
 
