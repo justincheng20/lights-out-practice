@@ -51,7 +51,6 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   function hasWon() {
     for (let x = 0; x < nrows; x++) {
       for (let y = 0; y < ncols; y++) {
-        console.log("check",board[y][x])
         if (board[y][x]) return false;
       };
     }
@@ -64,7 +63,6 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
       const flipCell = (y, x, boardCopy) => {
         // if this coord is actually on board, flip it
-        console.log(y,x)
         if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
           boardCopy[y][x] = !boardCopy[y][x];
         }
@@ -79,7 +77,6 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       flipCell(y, x - 1, newBoard);
       flipCell(y, x + 1, newBoard);
       // TODO: return the copy
-      console.log(newBoard)
       return newBoard;
     });
   }
