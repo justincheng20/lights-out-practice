@@ -90,14 +90,12 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   // make table board
 
   return (
-    <div>
-      
-        {board.map((row,x) =>
-          <div>
-            {row.map((cell,y) => <span><Cell flipCellsAroundMe={()=>flipCellsAround(`${x}-${y}`)} isLit={cell} /></span>)}
-          </div>
-        )}
-      
+    <div id="game">
+      {board.map((row, x) =>
+        <div className="row">
+          {row.map((cell, y) => <Cell flipCellsAroundMe={() => flipCellsAround(`${x}-${y}`)} isLit={cell} />)}
+        </div>
+      )}
     </div>
   );
   // TODO
